@@ -1,3 +1,5 @@
+import { IProduct } from "@/data/interfaces/product.interface";
+
 export type GenericLayoutProps = {
   children: React.ReactNode;
 };
@@ -9,4 +11,8 @@ export type ContainerProps = {
 
 export type HeaderProps = {
   userId?: string | null;
+};
+
+export type PopularContentProps = {
+  data: IProduct;
 };
