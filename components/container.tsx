@@ -1,5 +1,6 @@
-// utils
+// types
 import { ContainerProps } from "@/data/types";
+// utils
 import { cn } from "@/lib/utils";
 
 const Container = ({ className, children }: ContainerProps) => {

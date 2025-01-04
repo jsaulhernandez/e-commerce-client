@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-// components
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-// types
-import { PopularContentProps } from "@/data/types";
-import { Button } from "./ui/button";
 import { Heart, HeartCrack, ShoppingCart } from "lucide-react";
 import { useState } from "react";
+// components
+import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+// types
+import { PopularContentProps } from "@/data/types";
+// utils
 import { cn } from "@/lib/utils";
 
 const PopularContent = ({ data }: PopularContentProps) => {
