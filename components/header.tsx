@@ -33,7 +33,7 @@ const Header = ({ userId }: HeaderProps) => {
         scrolled ? "fixed top-0 left-0 bg-white shadow-lg" : "bg-transparent"
       )}
     >
-      <Container>
+      <Container className="mx-auto max-w-7xl">
         <div className="relative px-4 sm:px-6 lg:px-12 flex h-16 items-center">
           <Link
             href={"/"}
