@@ -16,3 +16,9 @@ export type HeaderProps = {
 export type PopularContentProps = {
   data: IProduct;
 };
+
+export type WhyChooseUProps = {
+  icon?: React.ReactNode;
+  title: string;
+  description: string;
+};
