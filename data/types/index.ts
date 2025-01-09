@@ -22,3 +22,9 @@ export type WhyChooseUProps = {
   title: string;
   description: string;
 };
+
+export type ChefImageProps = {
+  pathImage: string;
+  className?: string;
+  alt?: string;
+};
