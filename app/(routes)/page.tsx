@@ -5,12 +5,15 @@ import { FileHeart, Salad, Truck } from "lucide-react";
 import Container from "@/components/container";
 import PopularContent from "@/components/popular-content";
 import { Button } from "@/components/ui/button";
-import WhyChooseUs from "@/components/why-choose-us";
+import WhyChooseUs from "./_components/why-choose-us";
+import ChefImage from "./_components/chef-image";
+// interfaces
+import { IProduct } from "@/data/interfaces/product.interface";
 // actions
 import getProducts from "@/actions/get-products";
 
 const HomePage = async () => {
-  const products = await getProducts({
+  const products: IProduct[] = await getProducts({
     isFeatured: false,
   });
 
@@ -77,7 +80,7 @@ const HomePage = async () => {
           </h2>
           <p className="w-full text-center md:w-[560px] text-base text-neutral-500 my-2">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic,
-            commodi repellendus quod tempore reiciendis mollitia perferendis{" "}
+            commodi repellendus quod tempore reiciendis mollitia perferendis
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full my-6 mt-20">
@@ -96,6 +99,23 @@ const HomePage = async () => {
               title="Fast Delivery"
               description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus laudantium sunt"
             />
+          </div>
+        </section>
+
+        {/* our chef sections */}
+        <section className="my-4 py-12 flex flex-col items-center justify-center">
+          <h2 className="text-5xl md:text-5xl font-bold tracking-wider uppercase text-neutral-700 my-4">
+            Our Special Chefs
+          </h2>
+          <p className="w-full text-center md:w-[560px] text-base text-neutral-500 my-2">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic,
+            commodi repellendus quod tempore reiciendis mollitia perferendis
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full my-6 mt-20">
+            <ChefImage pathImage="/img/chef1.png" />
+            <ChefImage pathImage="/img/chef3.png" className="mt-20" />
+            <ChefImage pathImage="/img/chef2.png" />
           </div>
         </section>
       </Container>
