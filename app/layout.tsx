@@ -6,6 +6,7 @@ import Image from "next/image";
 import "./globals.css";
 // components
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 // utils
 import { cn } from "@/lib/utils";
 
@@ -40,6 +41,7 @@ export default async function RootLayout({
           <Header userId={userId} />
 
           {children}
+          <Footer />
         </body>
       </html>
     </ClerkProvider>
