@@ -14,7 +14,7 @@ const CategoriesFilter = ({ categories }: CategoriesFilterProps) => {
 
   return (
     <Box className="flex flex-col gap-2 border-b pb-4 cursor-pointer">
-      <h2 className="text-xl font-semibold text-neutral-700">Category</h2>
+      <h2 className="text-xl font-semibold text-neutral-700">Categories</h2>
 
       <Box className="flex flex-col gap-2 mt-2">
         {categories.map((c) => (
