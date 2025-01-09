@@ -3,11 +3,11 @@ import qs from "query-string";
 import { IProduct } from "@/data/interfaces/product.interface";
 import { Query } from "@/data/ui/query.interface";
 // constants
-import { productURL } from "@/data/constants";
+import { productsURL } from "@/data/constants";
 
 const getProducts = async (q: Query): Promise<IProduct[]> => {
   const url = qs.stringifyUrl({
-    url: productURL,
+    url: productsURL,
     query: {
       size: q.size,
       category: q.category,
