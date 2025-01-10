@@ -6,21 +6,21 @@ import { Check } from "lucide-react";
 // components
 import Box from "@/components/box";
 // types
-import { CategoriesFilterProps } from "@/data/types";
+import { SizesFilterProps } from "@/data/types";
 // utils
 import { cn } from "@/lib/utils";
 
-const CategoriesFilter = ({ categories }: CategoriesFilterProps) => {
+const SizesFilter = ({ sizes }: SizesFilterProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
   const handleClick = (value: string) => {
     const currentParams = Object.fromEntries(searchParams.entries());
 
-    if (currentParams.category === value) {
-      delete currentParams.category;
+    if (currentParams.size === value) {
+      delete currentParams.size;
     } else {
-      currentParams.category = value;
+      currentParams.size = value;
     }
 
     const href = qs.stringifyUrl({
@@ -33,20 +33,22 @@ const CategoriesFilter = ({ categories }: CategoriesFilterProps) => {
 
   return (
     <Box className="flex flex-col gap-2 border-b pb-4 cursor-pointer">
-      <h2 className="text-xl font-semibold text-neutral-700">Categories</h2>
+      <h2 className="text-xl font-semibold text-neutral-700">Sizes</h2>
 
       <Box className="flex flex-col gap-2 mt-2">
-        {categories.map((c) => (
+        {sizes.map((s) => (
           <div
-            key={c.id}
-            onClick={() => handleClick(c.name)}
+            key={s.id}
+            onClick={() => handleClick(s.value)}
             className={cn(
               "text-sm font-semibold text-neutral-500 flex items-center gap-2",
-              c.name === searchParams.get("category") && "text-hero"
+              s.value === searchParams.get("size") && "text-hero"
             )}
           >
-            <p>{c.name}</p>
-            {c.name === searchParams.get("category") && (
+            <p>
+              {s.name} ({s.value})
+            </p>
+            {s.value === searchParams.get("size") && (
               <Check className="h-4 w-4 text-hero" />
             )}
           </div>
@@ -56,4 +58,4 @@ const CategoriesFilter = ({ categories }: CategoriesFilterProps) => {
   );
 };
 
-export default CategoriesFilter;
+export default SizesFilter;

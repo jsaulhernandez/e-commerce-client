@@ -1,5 +1,8 @@
 import { IProduct } from "@/data/interfaces/product.interface";
 import { ICategory } from "@/data/interfaces/category.interface";
+import { ISize } from "@/data/interfaces/size.interface";
+import { IKitchen } from "@/data/interfaces/kitchen.interface";
+import { ICuisine } from "@/data/interfaces/cuisine.interface";
 
 export type GenericLayoutProps = {
   children: React.ReactNode;
@@ -50,4 +53,16 @@ export type FilterContainerProps = BoxProps;
 
 export type CategoriesFilterProps = {
   categories: ICategory[];
+};
+
+export type SizesFilterProps = {
+  sizes: ISize[];
+};
+
+export type KitchensFilterProps = {
+  kitchens: IKitchen[];
+};
+
+export type CuisinesFilterProps = {
+  cuisines: ICuisine[];
 };

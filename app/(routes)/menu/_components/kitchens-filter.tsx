@@ -6,21 +6,21 @@ import { Check } from "lucide-react";
 // components
 import Box from "@/components/box";
 // types
-import { CategoriesFilterProps } from "@/data/types";
+import { KitchensFilterProps } from "@/data/types";
 // utils
 import { cn } from "@/lib/utils";
 
-const CategoriesFilter = ({ categories }: CategoriesFilterProps) => {
+const KitchensFilter = ({ kitchens }: KitchensFilterProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
   const handleClick = (value: string) => {
     const currentParams = Object.fromEntries(searchParams.entries());
 
-    if (currentParams.category === value) {
-      delete currentParams.category;
+    if (currentParams.kitchen === value) {
+      delete currentParams.kitchen;
     } else {
-      currentParams.category = value;
+      currentParams.kitchen = value;
     }
 
     const href = qs.stringifyUrl({
@@ -33,20 +33,20 @@ const CategoriesFilter = ({ categories }: CategoriesFilterProps) => {
 
   return (
     <Box className="flex flex-col gap-2 border-b pb-4 cursor-pointer">
-      <h2 className="text-xl font-semibold text-neutral-700">Categories</h2>
+      <h2 className="text-xl font-semibold text-neutral-700">Kitchens</h2>
 
       <Box className="flex flex-col gap-2 mt-2">
-        {categories.map((c) => (
+        {kitchens.map((k) => (
           <div
-            key={c.id}
-            onClick={() => handleClick(c.name)}
+            key={k.id}
+            onClick={() => handleClick(k.value)}
             className={cn(
               "text-sm font-semibold text-neutral-500 flex items-center gap-2",
-              c.name === searchParams.get("category") && "text-hero"
+              k.value === searchParams.get("kitchen") && "text-hero"
             )}
           >
-            <p>{c.name}</p>
-            {c.name === searchParams.get("category") && (
+            <p>{k.name}</p>
+            {k.value === searchParams.get("kitchen") && (
               <Check className="h-4 w-4 text-hero" />
             )}
           </div>
@@ -56,4 +56,4 @@ const CategoriesFilter = ({ categories }: CategoriesFilterProps) => {
   );
 };
 
-export default CategoriesFilter;
+export default KitchensFilter;
