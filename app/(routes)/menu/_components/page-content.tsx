@@ -39,7 +39,10 @@ const PageContent = ({ products }: PageContentProps) => {
           </Link>
 
           <ChevronRight className="w-5 h-5 text-muted-foreground" />
-          <Link href={"/menu"} className="flex items-center gap-2">
+          <Link
+            href={"/menu"}
+            className="flex items-center gap-2 text-muted-foreground"
+          >
             Products
           </Link>
 
