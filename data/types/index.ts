@@ -66,3 +66,7 @@ export type KitchensFilterProps = {
 export type CuisinesFilterProps = {
   cuisines: ICuisine[];
 };
+
+export type PageContentProps = {
+  products: IProduct[];
+};
