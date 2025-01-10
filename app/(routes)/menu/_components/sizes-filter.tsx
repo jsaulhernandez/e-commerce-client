@@ -39,16 +39,16 @@ const SizesFilter = ({ sizes }: SizesFilterProps) => {
         {sizes.map((s) => (
           <div
             key={s.id}
-            onClick={() => handleClick(s.value)}
+            onClick={() => handleClick(s.name)}
             className={cn(
               "text-sm font-semibold text-neutral-500 flex items-center gap-2",
-              s.value === searchParams.get("size") && "text-hero"
+              s.name === searchParams.get("size") && "text-hero"
             )}
           >
             <p>
               {s.name} ({s.value})
             </p>
-            {s.value === searchParams.get("size") && (
+            {s.name === searchParams.get("size") && (
               <Check className="h-4 w-4 text-hero" />
             )}
           </div>

@@ -6,11 +6,13 @@ import CategoriesFilter from "./_components/categories-filter";
 import SizesFilter from "./_components/sizes-filter";
 import KitchensFilter from "./_components/kitchens-filter";
 import CuisinesFilter from "./_components/cuisines-filter";
+import PageContent from "./_components/page-content";
 // interfaces
 import { ICategory } from "@/data/interfaces/category.interface";
 import { ISize } from "@/data/interfaces/size.interface";
 import { IKitchen } from "@/data/interfaces/kitchen.interface";
 import { ICuisine } from "@/data/interfaces/cuisine.interface";
+import { IProduct } from "@/data/interfaces/product.interface";
 // types
 import { MenuPageProps } from "@/data/types";
 // actions
@@ -18,14 +20,26 @@ import getCategories from "@/actions/get-categories";
 import getSizes from "@/actions/get-sizes";
 import getKitchens from "@/actions/get-kitchens";
 import getCuisines from "@/actions/get-cuisines";
+import getProducts from "@/actions/get-products";
 
 export const revalidate = 0;
 
-const MenuPage = async ({}: MenuPageProps) => {
+const MenuPage = async (props: MenuPageProps) => {
+  const { category, size, kitchen, cuisine, isArchived, isFeatured } =
+    await props.searchParams;
+
   const categories: ICategory[] = await getCategories();
   const sizes: ISize[] = await getSizes();
   const kitchens: IKitchen[] = await getKitchens();
   const cuisines: ICuisine[] = await getCuisines();
+  const products: IProduct[] = await getProducts({
+    category: category,
+    size: size,
+    kitchen: kitchen,
+    cuisine: cuisine,
+    isFeatured: isFeatured,
+    isArchived: isArchived,
+  });
 
   return (
     <Container className="px-4 md:px-12">
@@ -39,7 +53,7 @@ const MenuPage = async ({}: MenuPageProps) => {
           </FilterContainer>
         </div>
         <Box className="col-span-12 md:col-span-10 flex flex-col  items-start justify-start">
-          Page content
+          <PageContent products={products} />
         </Box>
       </div>
     </Container>

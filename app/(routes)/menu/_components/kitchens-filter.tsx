@@ -39,14 +39,14 @@ const KitchensFilter = ({ kitchens }: KitchensFilterProps) => {
         {kitchens.map((k) => (
           <div
             key={k.id}
-            onClick={() => handleClick(k.value)}
+            onClick={() => handleClick(k.name)}
             className={cn(
               "text-sm font-semibold text-neutral-500 flex items-center gap-2",
-              k.value === searchParams.get("kitchen") && "text-hero"
+              k.name === searchParams.get("kitchen") && "text-hero"
             )}
           >
             <p>{k.name}</p>
-            {k.value === searchParams.get("kitchen") && (
+            {k.name === searchParams.get("kitchen") && (
               <Check className="h-4 w-4 text-hero" />
             )}
           </div>
