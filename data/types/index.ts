@@ -70,3 +70,27 @@ export type CuisinesFilterProps = {
 export type PageContentProps = {
   products: IProduct[];
 };
+
+export type ProductPageProps = {
+  params: {
+    productId: string;
+  };
+};
+
+export type GalleryProps = {
+  images: {
+    url: string;
+  }[];
+};
+
+export type GalleryItemProps = {
+  url: string;
+};
+
+export type InfoProps = {
+  product: IProduct;
+};
+
+export type SuggestedListProps = {
+  products: IProduct[];
+};
