@@ -7,6 +7,8 @@ import "./globals.css";
 // components
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+// providers
+import ToastProvider from "@/providers/toast-provider";
 // utils
 import { cn } from "@/lib/utils";
 
@@ -31,6 +33,7 @@ export default async function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={cn("bg-background antialiased", urbanist.variable)}>
+          <ToastProvider />
           <Image
             src="/img/hero.svg"
             alt=""
