@@ -7,6 +7,10 @@ import { useState } from "react";
 // components
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+// hooks
+import useCart from "@/hooks/use-cart.hook";
+// interfaces
+import { IProduct } from "@/data/interfaces/product.interface";
 // types
 import { PopularContentProps } from "@/data/types";
 // utils
@@ -14,8 +18,13 @@ import { cn } from "@/lib/utils";
 
 const PopularContent = ({ data }: PopularContentProps) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
+  const cart = useCart();
 
   const IsLikedIcon = isLiked ? Heart : HeartCrack;
+
+  const addItem = (data: IProduct) => {
+    cart.addItem({ ...data, qty: 1 });
+  };
 
   return (
     <Card className="w-full max-h-[340px] rounded-md bg-white shadow-lg border-none flex flex-col items-center justify-center relative py-6 pt-24 md:pt-28">
@@ -81,7 +90,7 @@ const PopularContent = ({ data }: PopularContentProps) => {
       {/* add to cart */}
       <Button
         className="absolute top-0 right-0 rounded-tl-none rounded-tr-lg rounded-bl-lg rounded-br-none p-2 px-3"
-        onClick={() => {}}
+        onClick={() => addItem(data)}
       >
         <ShoppingCart className="w-4 h-4" />
       </Button>

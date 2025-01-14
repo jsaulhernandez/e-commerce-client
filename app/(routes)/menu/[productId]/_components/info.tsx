@@ -10,6 +10,10 @@ import {
 import { useState } from "react";
 // components
 import { Button } from "@/components/ui/button";
+// hooks
+import useCart from "@/hooks/use-cart.hook";
+// interfaces
+import { IProduct } from "@/data/interfaces/product.interface";
 // types
 import { InfoProps } from "@/data/types";
 // utils
@@ -17,9 +21,15 @@ import { cn } from "@/lib/utils";
 
 const Info = ({ product }: InfoProps) => {
   const [qty, setQty] = useState<number>(1);
+  const cart = useCart();
 
   const handleQty = (value: number) => {
     setQty(value);
+    cart.updateItemQuantity(product.id, value);
+  };
+
+  const addItem = (data: IProduct) => {
+    cart.addItem({ ...data, qty: qty });
   };
 
   return (
@@ -93,7 +103,10 @@ const Info = ({ product }: InfoProps) => {
         </div>
       </div>
 
-      <Button className="w-full  py-6 text-xl font-semibold hover:bg-hero hover:text-white flex items-center justify-center gap-3">
+      <Button
+        className="w-full  py-6 text-xl font-semibold hover:bg-hero hover:text-white flex items-center justify-center gap-3"
+        onClick={() => addItem(product)}
+      >
         Add to cart <ShoppingCart className="w-4 h-4" />
       </Button>
     </div>
