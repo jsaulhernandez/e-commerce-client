@@ -63,35 +63,37 @@ const CartItem = ({ product }: CartItemProps) => {
         </div>
       </div>
 
-      <Box className="flex items-center justify-center h-full">
-        <div className="flex items-center gap-2">
-          {[1, 2, 3, 4, 5].map((q) => (
-            <div
-              key={q}
-              onClick={() => handleQty(q)}
-              className={cn(
-                "w-8 h-8 cursor-pointer rounded-full flex items-center justify-center border border-hero",
-                qty === q
-                  ? "bg-hero shadow-md text-white"
-                  : "bg-transparent shadow-none"
-              )}
-            >
-              {q}
-            </div>
-          ))}
-        </div>
-      </Box>
+      <div className="flex flex-col sm:flex-row ml-auto gap-4">
+        <Box className="flex items-center justify-center h-full">
+          <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
+            {[1, 2, 3, 4, 5].map((q) => (
+              <div
+                key={q}
+                onClick={() => handleQty(q)}
+                className={cn(
+                  "w-8 h-8 cursor-pointer rounded-full flex items-center justify-center border border-hero",
+                  qty === q
+                    ? "bg-hero shadow-md text-white"
+                    : "bg-transparent shadow-none"
+                )}
+              >
+                {q}
+              </div>
+            ))}
+          </div>
+        </Box>
 
-      <Box>
-        <h2>${product.price * product.qty}</h2>
-      </Box>
+        <Box className="justify-center">
+          <h2>${product.price * product.qty}</h2>
+        </Box>
 
-      <Button
-        className="w-auto m-auto"
-        onClick={() => cart.removeItem(product.id)}
-      >
-        <Trash className="h-4 w-4" />
-      </Button>
+        <Button
+          className="w-auto m-auto"
+          onClick={() => cart.removeItem(product.id)}
+        >
+          <Trash className="h-4 w-4" />
+        </Button>
+      </div>
     </Box>
   );
 };
