@@ -94,3 +94,9 @@ export type InfoProps = {
 export type SuggestedListProps = {
   products: IProduct[];
 };
+
+export type CartContentProps = { userId: string };
+
+export type CartItemProps = {
+  product: IProduct;
+};
