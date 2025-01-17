@@ -95,7 +95,7 @@ export type SuggestedListProps = {
   products: IProduct[];
 };
 
-export type CartContentProps = { userId: string };
+export type CartContentProps = { userId: string | null };
 
 export type CartItemProps = {
   product: IProduct;
