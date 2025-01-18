@@ -26,7 +26,11 @@ const CartContent = ({ userId }: CartContentProps) => {
   }, 0);
 
   useEffect(() => {
-    if (searchParams.get("success")) toast.success("Payment Completed");
+    if (searchParams.get("success")) {
+      toast.success("Payment Completed");
+      cart.removeAll();
+    }
+
     if (searchParams.get("canceled"))
       toast.error("Something went wrong, try again later!");
   }, [searchParams, cart.removeAll]);
