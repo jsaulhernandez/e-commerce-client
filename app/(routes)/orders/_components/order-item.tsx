@@ -6,12 +6,19 @@ import Box from "@/components/box";
 // types
 import { OrderItemProps } from "@/data/types";
 // utils
-import { cn } from "@/lib/utils";
+import { cn, formatter } from "@/lib/utils";
 
 const OrderItem = ({ order }: OrderItemProps) => {
+  const totalPrice: number = order.orderItems.reduce((total, item) => {
+    if (item && item.qty !== undefined)
+      return total + Number(item.price * item.qty);
+
+    return total;
+  }, 0);
+
   return (
     <Box>
-      <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-6 px-4 py-2 rounded-md border border-gray-100">
+      <div className="w-full grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-6 px-4 py-2 rounded-md border border-gray-100">
         <div className="flex items-center gap-2">
           {order.orderItems.map((oi) => (
             <div
@@ -51,6 +58,10 @@ const OrderItem = ({ order }: OrderItemProps) => {
           )}
         >
           {order.isPaid ? "Paid" : "Not Paid"}
+        </p>
+
+        <p className="text-neutral-700 text-lg font-semibold">
+          Total: {formatter.format(totalPrice)}
         </p>
       </div>
     </Box>
