@@ -93,7 +93,11 @@ const CartContent = ({ userId }: CartContentProps) => {
               </h2>
 
               <Separator />
-              <Button className="w-full" onClick={() => onCheckOut()}>
+              <Button
+                className="w-full"
+                onClick={() => onCheckOut()}
+                disabled={cart.items.length === 0}
+              >
                 Check Out
               </Button>
             </Box>
