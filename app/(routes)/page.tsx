@@ -12,6 +12,8 @@ import { IProduct } from "@/data/interfaces/product.interface";
 // actions
 import getProducts from "@/actions/get-products";
 
+export const revalidate = 0;
+
 const HomePage = async () => {
   const products: IProduct[] = await getProducts({
     isFeatured: false,

@@ -3,6 +3,7 @@ import { ICategory } from "@/data/interfaces/category.interface";
 import { ISize } from "@/data/interfaces/size.interface";
 import { IKitchen } from "@/data/interfaces/kitchen.interface";
 import { ICuisine } from "@/data/interfaces/cuisine.interface";
+import { IOrder } from "@/data/interfaces/order.interface";
 
 export type GenericLayoutProps = {
   children: React.ReactNode;
@@ -100,3 +101,7 @@ export type CartContentProps = { userId: string | null };
 export type CartItemProps = {
   product: IProduct;
 };
+
+export type OrdersContentProps = { orders: IOrder[] };
+
+export type OrderItemProps = { order: IOrder };
